@@ -1,0 +1,7 @@
+on boot
+    # Game Mode
+    chown system system /proc/touchpanel/game_switch_enable
+    chmod 0666 /proc/touchpanel/game_switch_enable
+    # DC dimming
+    chown system system /sys/kernel/oplus_display/dimlayer_bl_en
+    chmod 0666 /sys/kernel/oplus_display/dimlayer_bl_en
