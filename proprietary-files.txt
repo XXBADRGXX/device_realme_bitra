@@ -1390,7 +1390,6 @@ vendor/etc/seccomp_policy/codec2.vendor.ext-arm.policy
 vendor/etc/media_profiles.xml
 vendor/etc/media_profiles_kona.xml
 vendor/etc/media_profiles_vendor.xml
-vendor/etc/system_properties.xml
 vendor/lib/libqcodec2_base.so
 vendor/lib/libqcodec2_basecodec.so
 vendor/lib/libqcodec2_core.so
@@ -1423,31 +1422,6 @@ vendor/lib64/unnhal-acc-hvx.so
 odm/etc/nfc/libnfc-mtp-SN100.conf_19805:vendor/etc/libnfc-nxp.conf|22eebd616d96f5b25a2e97079ff543e70b880885
 odm/etc/nfc/libnfc-nci.conf_19805:vendor/etc/libnfc-nci.conf|1a99bfe520f18dfffb39d809c812c8bba10f3ae4
 odm/etc/nfc/sn100u.bin_sn100t_fw_01_10_53:vendor/firmware/sn100u.bin|797f5a57fa9247cd41d0e6c384e9465eb586a626
-
-# OMX
-vendor/lib/libOmxAacDec.so
-vendor/lib/libOmxAlacDec.so
-vendor/lib/libOmxAmrDec.so
-vendor/lib/libOmxAmrwbplusDec.so
-vendor/lib/libOmxApeDec.so
-vendor/lib/libOmxDsdDec.so
-vendor/lib/libOmxEvrcDec.so
-vendor/lib/libOmxG711Dec.so
-vendor/lib/libOmxQcelp13Dec.so
-vendor/lib/libOmxVideoDSMode.so;DISABLE_CHECKELF
-vendor/lib/libOmxVpp.so;DISABLE_CHECKELF
-vendor/lib/libOmxWmaDec.so
-vendor/lib/libdsd2pcm.so
-vendor/lib64/libOmxAacDec.so
-vendor/lib64/libOmxAlacDec.so
-vendor/lib64/libOmxAmrDec.so
-vendor/lib64/libOmxAmrwbplusDec.so
-vendor/lib64/libOmxApeDec.so
-vendor/lib64/libOmxEvrcDec.so
-vendor/lib64/libOmxG711Dec.so
-vendor/lib64/libOmxQcelp13Dec.so
-vendor/lib64/libOmxVpp.so;DISABLE_CHECKELF
-vendor/lib64/libOmxWmaDec.so
 
 # Osense
 odm/lib64/libosenseaidlhalclient.so
