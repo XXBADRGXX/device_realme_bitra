@@ -767,7 +767,7 @@ vendor/lib64/vendor.oplus.hardware.cammidasservice-V1-ndk_platform.so
 vendor/lib64/vendor.oplus.hardware.cammidasservice@1.0.so
 vendor/lib64/vendor.oplus.hardware.commondcs-V1-ndk_platform.so
 vendor/lib64/vendor.oplus.hardware.extcamera@1.0.so
-vendor/lib64/vendor.qti.hardware.camera.postproc@1.0-service-impl.so|af3ebaadd0c77af2ce95e1f7a8671f486f86e0cd|1da16b6e07e7688325bc23017c1a837eba277e1a
+vendor/lib64/vendor.qti.hardware.camera.postproc@1.0-service-impl.so
 
 # Camera (components)
 odm/lib64/camera/components/com.oplus.node.aiaftrack.so
