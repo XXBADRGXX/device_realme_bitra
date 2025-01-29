@@ -547,7 +547,7 @@ odm/etc/camera/tonemap/tonemap_lut_8
 odm/etc/camera/tonemap/tonemap_lut_9
 odm/lib/libDeVIS.so
 odm/lib/libaiboost.so;FIX_SONAME
-odm/lib/libaiboost_hexagon.so
+odm/lib/libaiboost_hexagon.so;DISABLE_CHECKELF
 odm/lib/libaiboost_nnlib_sr.so
 odm/lib/libaiboost_sr.so
 odm/lib/libaiboost_ubwc.so
@@ -582,7 +582,7 @@ odm/lib64/libFilterWrapper.so
 odm/lib64/libHdrVideo.so
 odm/lib64/libImageWarpMask.so;FIX_SONAME
 odm/lib64/libNightVideo.so
-odm/lib64/libOGLManager.so
+odm/lib64/libOGLManager.so;DISABLE_CHECKELF
 odm/lib64/libOPLUS_SCPortrait.so;FIX_SONAME
 odm/lib64/libPerfectColor.so
 odm/lib64/libPerfectlyClearCrux.so
@@ -613,7 +613,7 @@ odm/lib64/libWaterMode.so
 odm/lib64/libYTCommon.so
 odm/lib64/lib_rectify.so
 odm/lib64/libaiboost.so;FIX_SONAME
-odm/lib64/libaiboost_hexagon.so
+odm/lib64/libaiboost_hexagon.so;DISABLE_CHECKELF
 odm/lib64/libaiboost_nnlib_sr.so
 odm/lib64/libaiboost_sr.so
 odm/lib64/libaiboost_ubwc.so
@@ -642,8 +642,8 @@ odm/lib64/libarcsoft_hdrplus_hvx_stub.so
 odm/lib64/libarcsoft_high_dynamic_range.so
 odm/lib64/libarcsoft_high_dynamic_range_couple.so
 odm/lib64/libarcsoft_high_dynamic_range_couple_v4.so
-odm/lib64/libarcsoft_high_dynamic_range_v4.so
-odm/lib64/libarcsoft_hta.so
+odm/lib64/libarcsoft_high_dynamic_range_v4.so;DISABLE_CHECKELF
+odm/lib64/libarcsoft_hta.so;DISABLE_CHECKELF
 odm/lib64/libarcsoft_lensstaindetection.so
 odm/lib64/libarcsoft_low_light_hdr.so
 odm/lib64/libarcsoft_low_light_hdr_for_neon.so;FIX_SONAME
