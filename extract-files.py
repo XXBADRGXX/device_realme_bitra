@@ -123,7 +123,7 @@ blob_fixups: blob_fixups_user_type = {
     'vendor/lib64/vendor.qti.hardware.camera.postproc@1.0-service-impl.so': blob_fixup()
         .call(blob_fixup_nop_call, 'bl', '__cfi_check', '_ZN7android8hardware22configureRpcThreadpoolEmb@plt'),
     'odm/lib64/libAlgoProcess.so': blob_fixup()
-        .replace_needed('android.hardware.graphics.common-V1-ndk_platform.so', 'android.hardware.graphics.common-V5-ndk.so'),
+        .replace_needed('android.hardware.graphics.common-V1-ndk_platform.so', 'android.hardware.graphics.common-V6-ndk.so'),
     ('odm/lib64/libarcsoft_high_dynamic_range_v4.so', 'odm/lib64/libarcsoft_hta.so', 'odm/lib64/libarcsoft_qnnhtp.so'): blob_fixup()
         .clear_symbol_version('remote_handle_close')
         .clear_symbol_version('remote_handle_invoke')
