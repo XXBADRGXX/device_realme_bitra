@@ -375,6 +375,8 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
  # Parts
 PRODUCT_PACKAGES += \
     RealmeParts \  
+    PerappRefreshRate
+
 
 # Power
 PRODUCT_PACKAGES += \
