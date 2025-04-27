@@ -5,4 +5,10 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_RMX3371.mk
+    $(LOCAL_DIR)/lineage_bitra.mk
+
+COMMON_LUNCH_CHOICES := \
+    lineage_bitra-user \
+    lineage_bitra-userdebug \
+    lineage_bitra-eng
+

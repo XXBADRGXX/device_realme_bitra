@@ -9,11 +9,26 @@ on init
     write /proc/fastchg_fw_update 1
     write /proc/ui_soc_decimal 1
 
+    copy_per_line /dev/cpuctl/tasks /dev/cpuctl/system/tasks
+
 on fs
     # Update touchpanel firmware in case we ship newer firmware in /odm
     write /proc/touchpanel/tp_fw_update 0
 
 on post-fs-data
+    # ADSP ramdump
+    mkdir /data/vendor/mmdump 0777 system system
+    chmod 0777 /data/vendor/mmdump
+    mkdir /data/vendor/mmdump/adsp 0777 system system
+    chmod 0777 /data/vendor/mmdump/adsp
+
+    chmod 0777 /data/vendor
+    chmod 0777 /data/vendor/bluetooth
+    mkdir /data/vendor/bluetooth/fw 0777 bluetooth bluetooth
+
+    # Audio HAL feedback
+    chown media media /proc/mm_fb
+
     # Media XML codecs
     setprop ro.media.xml_variant.codecs _kona
     setprop ro.media.xml_variant.codecs_performance _kona
@@ -41,30 +56,147 @@ on early-boot
     stop console
 
 on boot
-    # Display
-    chmod 0666 /dev/oplus_display
-    chmod 0666 /sys/kernel/oplus_display/dimlayer_bl_en
-    chmod 0666 /sys/kernel/oplus_display/dynamic_osc_clock
-    chmod 0666 /sys/kernel/oplus_display/hbm
-    chmod 0666 /sys/kernel/oplus_display/notify_fppress
-    chmod 0666 /sys/kernel/oplus_display/panel_serial_number
-    chmod 0666 /sys/kernel/oplus_display/power_status
 
+    # Charger
+    chown system system /proc/charger/charger_factorymode_test
+    chown system system /proc/charger/integrate_gauge_fcc_flag
+    chown system system /proc/charger/hmac
+    chown system system /proc/charger_critical_log
+    chown system system /proc/fastchg_fw_update
+    chown system system /proc/tbatt_pwroff
+
+    chown system system /sys/class/oplus_chg/battery/call_mode
+    chown system system /sys/class/oplus_chg/battery/cool_down
+    chown system system /sys/class/oplus_chg/battery/bcc_current
+    chown system system /sys/class/oplus_chg/battery/bcc_exception
+    chown system system /sys/class/oplus_chg/battery/em_mode
+    chown system system /sys/class/oplus_chg/battery/mmi_charging_enable
+    chown system system /sys/class/oplus_chg/battery/ship_mode
+    chown system system /sys/class/oplus_chg/battery/short_c_hw_status
+    chown system system /sys/class/oplus_chg/battery/short_c_hw_feature
+    chown system system /sys/class/oplus_chg/battery/short_c_limit_chg
+    chown system system /sys/class/oplus_chg/battery/short_c_limit_rechg
+    chown system system /sys/class/oplus_chg/battery/short_ic_otp_status
+    chown system system /sys/class/oplus_chg/battery/short_ic_otp_value
+    chown system system /sys/class/oplus_chg/battery/short_ic_volt_thresh
+    chown system system /sys/class/oplus_chg/battery/soc_ajust
+    chown system system /sys/class/power_supply/battery/battery_info
+    chown system system /sys/class/power_supply/battery/battery_info_id
+    chown system system /sys/class/power_supply/battery/charging_enabled
+    chown system system /sys/class/power_supply/battery/cool_down
+    chown system system /sys/class/power_supply/battery/ship_mode
+    chown system system /sys/class/power_supply/battery/restore_soc
+    chown system system /sys/class/power_supply/battery/short_c_batt_in_idle
+    chown system system /sys/class/power_supply/battery/short_c_batt_limit_chg
+    chown system system /sys/class/power_supply/battery/short_c_batt_limit_rechg
+    chown system system /sys/class/power_supply/battery/short_c_batt_update_change
+    chown system system /sys/class/power_supply/battery/short_c_hw_feature
+    chown system system /sys/class/power_supply/battery/short_ic_otp_status
+    chown system system /sys/class/power_supply/battery/short_ic_volt_thresh
+    chown system system /sys/class/power_supply/battery/smooth_switch
+    chown system system /sys/class/power_supply/battery/soc_notify_ready
+    chown system system /sys/class/power_supply/battery/soc_reporting_ready
+    chown system system /sys/class/power_supply/battery/input_suspend
+    chmod 0666 /sys/class/power_supply/battery/input_suspend
+
+    chown system system /sys/class/oplus_chg/usb/otg_switch
+    chown system system /sys/class/power_supply/usb/otg_switch
+    chown system system /sys/class/power_supply/usb/type
+
+    # Display
+    chmod 0666 /sys/kernel/oplus_display/dump_info
+    chmod 0666 /sys/kernel/oplus_display/hbm
+    chmod 0666 /sys/kernel/oplus_display/seed
+    chmod 0666 /sys/kernel/oplus_display/panel_pwr
+    chmod 0666 /sys/kernel/oplus_display/dimlayer_bl_en
+    chmod 0666 /sys/kernel/oplus_display/ffl_set
+    chmod 0666 /sys/kernel/oplus_display/dimlayer_hbm
+    chmod 0666 /sys/kernel/oplus_display/force_screenfp
+    chmod 0666 /sys/kernel/oplus_display/notify_fppress
+    chmod 0666 /sys/kernel/oplus_display/aod_light_mode_set
+    chmod 0666 /sys/kernel/oplus_display/power_status
+    chmod 0666 /sys/kernel/oplus_display/sau_closebl_node
+    chmod 0666 /sys/kernel/oplus_display/esd_status
+    chmod 0644 /data/oppo/multimedia/oplus_display_perf_list.xml
+    chmod 0666 /sys/kernel/oplus_display/spr
+    chmod 0666 /sys/kernel/oplus_display/write_panel_reg
+    chmod 0666 /dev/oplus_display
+    chmod 0666 /sys/kernel/oplus_display/max_brightness
+    chmod 0666 /sys/kernel/oplus_display/dynamic_osc_clock
+    chmod 0666 /sys/kernel/oplus_display/panel_serial_number
+
+    chown system system /sys/kernel/oplus_display/dump_info
+    chown system system /sys/kernel/oplus_display/hbm
+    chown system system /sys/kernel/oplus_display/seed
+    chown system system /sys/kernel/oplus_display/panel_pwr
     chown system system /dev/oplus_display
     chown system system /sys/kernel/oplus_display/dimlayer_bl_en
-    chown system system /sys/kernel/oplus_display/dynamic_osc_clock
+    chown system system /sys/kernel/oplus_display/ffl_set
+    chown system system /sys/kernel/oplus_display/dimlayer_hbm
+    chown system system /sys/kernel/oplus_display/force_screenfp
     chown system system /sys/kernel/oplus_display/notify_fppress
-    chown system system /sys/kernel/oplus_display/panel_serial_number
+    chown system system /sys/kernel/oplus_display/aod_light_mode_set
     chown system system /sys/kernel/oplus_display/power_status
+    chown system system /sys/kernel/oplus_display/sau_closebl_node
+    chown system system /sys/kernel/oplus_display/esd_status
+    chown system system /sys/kernel/oplus_display/spr
+    chown system system /sys/kernel/oplus_display/write_panel_reg
+    chown system system /sys/kernel/oplus_display/max_brightness
+    chown system system /sys/kernel/oplus_display/dynamic_osc_clock
+    chown system system /sys/kernel/oplus_display/panel_serial_number
+    chown system system /dev/tp_misc
+    chown system system /proc/touchpanel/tp_fw_update
+    chown system system /proc/touchpanel/oplus_tp_limit_enable
+    chown system system /proc/touchpanel/oplus_tp_direction
+    chown system system /proc/touchpanel/double_tap_enable
+    chown system system /proc/touchpanel/coordinate
+    chown system system /proc/touchpanel/game_switch_enable
+    chown system system /proc/touchpanel/fp_enable
+    chown system system /proc/touchpanel/baseline_test
+    chown system system /proc/touchpanel/kernel_grip_handle
+    chown system system /proc/touchpanel/curved_size
+    chown system system /proc/touchpanel/charge_detect
+
+    write /proc/touchpanel/smooth_level 3
+    write /proc/touchpanel/sensitive_level 5
 
     chmod 0000 /sys/kernel/oplus_display/hbm
 
     # Sensors
     chown system system /sys/devices/platform/soc/soc:sensor_fb/adsp_notify
 
+    # TFA98XX
+    chown system audio /sys/bus/i2c/devices/4-0034/reg
+    chown system audio /sys/bus/i2c/devices/4-0035/reg
+    chown system audio /sys/bus/i2c/devices/4-0036/reg
+    chown system audio /sys/bus/i2c/devices/4-0034/rw
+    chown system audio /sys/bus/i2c/devices/4-0035/rw
+    chown system audio /sys/bus/i2c/devices/4-0036/rw
+    chown system audio /sys/bus/i2c/devices/2-0034/reg
+    chown system audio /sys/bus/i2c/devices/2-0034/rw
+    chmod 0220 /sys/bus/i2c/devices/4-0034/reg
+    chmod 0220 /sys/bus/i2c/devices/4-0035/reg
+    chmod 0220 /sys/bus/i2c/devices/4-0036/reg
+    chmod 0660 /sys/bus/i2c/devices/4-0034/rw
+    chmod 0660 /sys/bus/i2c/devices/4-0035/rw
+    chmod 0660 /sys/bus/i2c/devices/4-0036/rw
+    chmod 0220 /sys/bus/i2c/devices/2-0034/reg
+    chmod 0660 /sys/bus/i2c/devices/2-0034/rw
+
     # TOF
     chown cameraserver cameraserver /dev/stmvl53l1_ranging
 
+    # Sensors
+    chown system system /sys/devices/platform/soc/soc:sensor_fb/adsp_notify
+
+   
+    # Workarround for cache
+    rm /data/resource-cache
+    rm /data/system/package_cache 
+
+    # OTG
+    write /sys/class/oplus_chg/usb/otg_switch 1
+    
 on property:ro.boot.prjname=*
     # Display
     setprop ro.separate.soft ${ro.boot.prjname}
@@ -79,6 +211,9 @@ on property:sys.boot_completed=1
     # Enable suspend to RAM
     write /sys/power/mem_sleep "deep"
 
+
+    # Migrate tasks again in case kernel threads are created during boot
+    copy_per_line /dev/cpuctl/tasks /dev/cpuctl/system/tasks
 
 on property:vendor.post_boot.parsed=1
     # IRQ Tuning
