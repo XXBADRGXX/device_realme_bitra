@@ -1,42 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2022 The LineageOS Project
-     SPDX-License-Identifier: Apache-2.0
+ * Copyright (c) 2006, The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+*/
 -->
 <resources>
-
-    <!--  Allow CornerHandleView and PathSpecCornerPathRenderer to decouple from corner-radius -->
-    <dimen name="config_rounded_mask_size">8dp</dimen>
-
-    <!-- Microns/ums (1000 um = 1mm) per pixel for the given device. If unspecified, UI that
-         relies on this value will not be sized correctly. -->
-    <item name="pixel_pitch" format="float" type="dimen">63.22</item>
-
-    <!-- the padding on the start of the statusbar -->
-    <dimen name="status_bar_padding_start">0dp</dimen>
-
-    <!-- the padding on the end of the statusbar -->
-    <dimen name="status_bar_padding_end">0dp</dimen>
-
-    <!-- paddings for container with status icons and battery -->
-    <!-- padding start is a bit smaller than end to account for status icon margin-->
-    <dimen name="status_bar_icons_padding_start">0dp</dimen>
-
-    <dimen name="status_bar_icons_padding_end">0dp</dimen>
-
-    <!-- the padding on the top of the statusbar (usually 0) -->
-    <dimen name="status_bar_padding_top">11px</dimen>
-
     <!-- Height of the status bar header bar when on Keyguard -->
-    <dimen name="status_bar_header_height_keyguard">@*android:dimen/status_bar_height</dimen>
+    <dimen name="status_bar_header_height_keyguard">28dp</dimen>
 
     <!-- Margin on the left side of the carrier text on Keyguard -->
-    <dimen name="keyguard_carrier_text_margin">@dimen/status_bar_padding_start</dimen>
+    <dimen name="keyguard_carrier_text_margin">08dp</dimen>
 
-    <!-- Location on the screen of the center of the physical power button. -->
-    <dimen name="physical_power_button_center_screen_location_y">990px</dimen>
+    <dimen name="keyguard_indication_margin_bottom">400px</dimen>
+    <dimen name="ambient_indication_margin_bottom">400px</dimen>
 
-    <!-- The width/height of the unlock icon view on keyguard. -->
-    <dimen name="keyguard_indication_margin_bottom">350px</dimen>
+    <!-- The text size for battery level -->
+    <dimen name="battery_level_text_size">05sp</dimen>
 
+        <!-- Microns/ums (1000 um = 1mm) per pixel for the given device. If unspecified, UI that
+         relies on this value will not be sized correctly. -->
+         <item name="pixel_pitch" format="float" type="dimen">63.98</item>
 </resources>
