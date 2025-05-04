@@ -16,9 +16,15 @@ persist.vendor.audio.ras.enabled=false
 persist.vendor.audio.spv3.enable=true
 persist.vendor.audio.fluence.tmic.enabled=false
 persist.vendor.audio.voicecall.speaker.stereo=true
-ro.vendor.audio.sdk.fluencetype=none
+ro.vendor.audio.sdk.fluencetype=fluence
+vendor.audio_hal.in_period_size=96
 ro.vendor.audio.sdk.ssr=false
-vendor.audio.adm.buffering.ms=2
+vendor.audio_hal.period_multiplier=1
+vendor.audio_hal.period_size=128
+vendor.audio.adm.buffering.ms=1
+vendor.audio.capture.enforce_legacy_copp_sr=false
+vendor.audio.dolby.ds2.enabled=false
+vendor.audio.dolby.ds2.hardbypass=false
 vendor.audio.enable.mirrorlink=false
 vendor.audio.feature.a2dp_offload.enable=true
 vendor.audio.feature.afe_proxy.enable=true
@@ -66,7 +72,7 @@ vendor.audio.flac.sw.decoder.24bit=true
 vendor.audio.hal.boot.timeout.ms=20000
 vendor.audio.hal.output.suspend.supported=true
 vendor.audio.hw.aac.encoder=true
-vendor.audio.offload.buffer.size.kb=256
+vendor.audio.offload.buffer.size.kb=32
 vendor.audio.offload.gapless.enabled=true
 vendor.audio.offload.multiaac.enable=true
 vendor.audio.offload.multiple.enabled=false
@@ -79,6 +85,7 @@ vendor.audio.use.sw.alac.decoder=true
 vendor.audio.use.sw.ape.decoder=true
 vendor.audio.use.sw.mpegh.decoder=true
 vendor.audio.volume.headset.gain.depcal=true
+vendor.audio.offload.multiaac.enable=true
 vendor.audio_hal.in_period_size=144
 vendor.audio_hal.period_multiplier=3
 vendor.audio_hal.period_size=192
@@ -94,11 +101,11 @@ persist.bluetooth.sbc_hd_higher_bitrate=1
 
 # Bluetooth
 bluetooth.device.class_of_device=90,2,12
-bluetooth.device.default_name=realme GT NEO 3T
-bluetooth.hardware.power.idle_cur_ma=6
+bluetooth.device.default_name=realme GT Neo2 5G
+bluetooth.hardware.power.idle_cur_ma=5
 bluetooth.hardware.power.operating_voltage_mv=3700
 bluetooth.hardware.power.rx_cur_ma=28
-bluetooth.hardware.power.tx_cur_ma=36
+bluetooth.hardware.power.tx_cur_ma=32
 bluetooth.profile.a2dp.source.enabled?=true
 bluetooth.profile.asha.central.enabled?=true
 bluetooth.profile.avrcp.target.enabled?=true
@@ -123,7 +130,10 @@ persist.vendor.bt.aac_vbr_frm_ctl.enabled=true
 persist.vendor.qcom.bluetooth.a2dp_mcast_test.enabled=false
 persist.vendor.qcom.bluetooth.a2dp_offload_cap=sbc-aptx-aptxtws-aptxhd-aac-ldac-aptxadaptiver2
 persist.vendor.qcom.bluetooth.aac_frm_ctl.enabled=true
-persist.vendor.qcom.bluetooth.aptxadaptiver2_1_support=true
+persist.vendor.qcom.bluetooth.aac_vbr_ctl.enabled=true
+persist.vendor.qcom.bluetooth.aptxadaptiver2_1_support=false
+persist.vendor.qcom.bluetooth.enable.splita2dp=true
+persist.vendor.qcom.bluetooth.scram.enabled=false
 persist.vendor.qcom.bluetooth.soc=hastings
 persist.vendor.qcom.bluetooth.twsp_state.enabled=false
 persist.vendor.qcom.bluetooth.splita2dp.aac.frames_per_pkt=1
@@ -134,7 +144,7 @@ ro.vendor.bluetooth.wipower=false
 vendor.qcom.bluetooth.soc=hastings
 
 # Camera
-vendor.camera.aux.packageexcludelist=org.telegram.messenger,org.thunderdog.challegram,us.zoom.videomeetings
+vendor.camera.aux.packageexcludelist=org.telegram.messenger,org.thunderdog.challegram
 
 # Chipset
 ro.soc.manufacturer=QTI
@@ -151,9 +161,8 @@ persist.vendor.dpmhalservice.enable=1
 # Dalvik
 dalvik.vm.dex2oat64.enabled=true
 
-
-
 # Display
+ro.vendor.display.sensortype=2
 vendor.display.disable_hw_recovery_dump=1
 vendor.display.disable_offline_rotator=1
 vendor.display.disable_system_load_check=1
@@ -166,7 +175,6 @@ vendor.display.smomo_camera_support=1
 vendor.display.smomo_game_support=0
 vendor.display.use_layer_ext=1
 vendor.display.use_smooth_motion=1
-ro.vendor.display.sensortype=2
 debug.gralloc.gfx_ubwc_disable=0
 debug.hwui.skia_atrace_enabled=false
 debug.hwui.skia_use_perfetto_track_events=false
@@ -195,7 +203,6 @@ ro.vendor.product.device.db=OP_DEVICE
 ro.vendor.product.manufacturer.db=OP_PHONE
 vendor.product.device=OP_PHONE
 vendor.product.manufacturer=OPD
-
 # DPM
 persist.vendor.dpmhalservice.enable=1
 
@@ -203,26 +210,27 @@ persist.vendor.dpmhalservice.enable=1
 drm.service.enabled=true
 
 # Fingerprint
+persist.vendor.fp.template_updateflag=V1
 persist.vendor.qfp=true
 vendor.flash.locked=0
 
-# FS-verity
-ro.apk_verity.mode=2
-
 # FRP
 ro.frp.pst=/dev/block/bootdevice/by-name/frp
-
 # FUSE passthrough
 persist.sys.fuse.passthrough.enable=true
 
 # Gatekeeper
 vendor.gatekeeper.disable_spu=true
 
+# FS-verity
+ro.apk_verity.mode=2
+
 # Graphics
 ro.surface_flinger.wcg_composition_dataspace=143261696
 vendor.opengles.version=196610
 debug.sf.enable_advanced_sf_phase_offset=1
-debug.sf.enable_gl_backpressure=1
+debug.sf.disable_client_composition_cache=1
+debug.sf.enable_gl_backpressure=0
 debug.sf.high_fps_early_gl_phase_offset_ns=-2000000
 debug.sf.high_fps_early_phase_offset_ns=-4000000
 debug.sf.high_fps_late_app_phase_offset_ns=1000000
@@ -250,9 +258,8 @@ ro.surface_flinger.protected_contents=true
 ro.surface_flinger.set_idle_timer_ms=4000
 ro.surface_flinger.set_touch_timer_ms=4000
 ro.surface_flinger.use_color_management=true
-ro.surface_flinger.use_content_detection_for_refresh_rate=true
-ro.surface_flinger.wcg_composition_dataspace=143261696
-vendor.opengles.version=196610
+ro.sf.skip_set_active_mode_when_off=1
+ro.surface_flinger.support_kernel_idle_timer=true
 
 # HWUI
 debug.hwui.use_hint_manager=true
@@ -260,7 +267,7 @@ debug.hwui.target_cpu_time_percent=20
 debug.sf.enable_adpf_cpu_hint=true
 
 # Incremental FS
-ro.incremental.enable=yes
+ro.incremental.enable=1
 
 # Logs
 persist.log.tag.AnalyticsService=S
@@ -277,15 +284,13 @@ persist.log.tag.ContrastColorUtil=S
 persist.log.tag.OpenGLRenderer=S
 
 # Media
-debug.stagefrvendor.media.vpp.enable=0
+vendor.media.vpp.enable=0
 vendor.media.vpp.osie.enable=0
-vendor.media.vpp.sr.enable=0ight.c2inputsurface=-1
+vendor.media.vpp.sr.enable=0
 
 # Multi-Gen LRU
 persist.device_config.mglru_native.lru_gen_config=core
 
-# Netflix
-ro.netflix.bsp_rev=Q8250-19134-1
 
 # Perf
 ro.vendor.extension_library=libqti-perfd-client.so
@@ -316,7 +321,7 @@ vendor.sensor.hal.pickup=android.sensor.tilt_detector
 ro.surface_flinger.set_idle_timer_ms?=4000
 ro.surface_flinger.set_touch_timer_ms?=1000
 ro.surface_flinger.set_display_power_timer_ms?=1000
-#ro.surface_flinger.use_content_detection_for_refresh_rate=false
+ro.surface_flinger.use_content_detection_for_refresh_rate=false
 vendor.display.defer_fps_frame_count?=2
 debug.sf.frame_rate_multiple_threshold=60
 vendor.display.use_smooth_motion=1
@@ -327,15 +332,20 @@ persist.vendor.ssr.restart_level=ALL_ENABLE
 # USB
 vendor.usb.diag.func.name=diag
 vendor.usb.dpl.inst.name=dpl
-vendor.usb.product_string=realme GT NEO 2
-vendor.usb.qdss.inst.name=qdss
+vendor.usb.product_string=realme GT Neo2 5G
+vendor.usb.qdss.inst.name=qdss_sw
 vendor.usb.rmnet.func.name=gsi
 vendor.usb.rmnet.inst.name=rmnet
 vendor.usb.rndis.func.name=gsi
 vendor.usb.use_ffs_mtp=0
 vendor.usb.use_gadget_hal=0
 
-# WiFi
+# Suspend properties
+suspend.max_sleep_time_millis=40000
+suspend.short_suspend_backoff_enabled=true
+suspend.short_suspend_threshold_millis=2000
+
+# Wifi
 wifi.aware.interface=wifi-aware0
 
 # Logs

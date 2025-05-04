@@ -1,5 +1,35 @@
 # Audio
+ro.audio.monitorOrientation=true
+ro.audio.monitorRotation=true
 af.fast_track_multiplier=1
+audio.deep_buffer.media=true
+audio.offload.min.duration.secs=30
+audio.offload.video=true
+ro.af.client_heap_size_kbyte=7168
+audio.sys.mute.latency.factor=2
+audio.sys.noisy.broadcast.delay=500
+audio.sys.offload.pstimeout.secs=3
+audio.sys.routing.latency=0
 
 # GMS
 ro.opa.device_model_id=ga-oplus-skill-os121-211011
+
+# enable debugging
+persist.sys.usb.config=mtp,adb
+ro.adb.secure=0
+ro.debuggable=1
+
+# Improve scrolling
+persist.sys.scrollingcache=0
+ro.min.fling_velocity=160
+ro.max.fling_velocity=20000
+
+# RKPD
+remote_provisioning.enable_rkpd=true
+remote_provisioning.hostname=remoteprovisioning.googleapis.com
+
+# Debug
+persist.sys.usb.config=mtp,adb
+ro.adb.secure=0 
+ro.debuggable=1 
+ro.secure=0
